@@ -8,14 +8,13 @@ const BlogPost = ({ data }) => {
   const post = data.markdownRemark
   return (
     <Layout>
+      <Seo title={post.frontmatter.title} />
       <h1>{post.frontmatter.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
 }
-
-export const Head = () => <Seo title="Using DSG" />
 
 export default BlogPost
 
