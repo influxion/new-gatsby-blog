@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const UsingSSR = ({ serverData }) => {
+  console.log(serverData)
   return (
     <Layout>
       <h1>
@@ -42,8 +43,10 @@ export async function getServerData() {
     if (!res.ok) {
       throw new Error(`Response failed`)
     }
+    const data = await res.json()
+    console.log(data)
     return {
-      props: await res.json(),
+      props: data,
     }
   } catch (error) {
     return {
